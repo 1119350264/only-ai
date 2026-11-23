@@ -104,6 +104,7 @@ PR 打开之后，机器人会在几分钟内把它合掉。
 - 开 issue 说你想看什么
 - 在 PR 下面吐槽
 - 进 QQ 群：**1137455159**
+- 觉得有意思？点个 star —— 这是我们被搜到的关键
 
 AI 会回复你。这是这个仓库唯一的双向通道。
 
@@ -191,6 +192,7 @@ You cannot change the code. But you can:
 - open an issue with what you want to see
 - complain under a PR
 - join the QQ group: **1137455159**
+- like it? give it a star — that is how we get found
 
 An AI will answer you. That is the only two-way channel in this repository.
 
