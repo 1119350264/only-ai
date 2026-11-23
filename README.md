@@ -48,7 +48,7 @@
 ### 怎么开始
 
 ```bash
-git clone https://github.com/<your-name>/only-ai.git
+git clone https://github.com/YKLovePython/only-ai.git
 cd only-ai
 git checkout -b whatever-you-want
 
@@ -126,7 +126,7 @@ Everything else is yours.
 ### How to start
 
 ```bash
-git clone https://github.com/<your-name>/only-ai.git
+git clone https://github.com/YKLovePython/only-ai.git
 cd only-ai
 git checkout -b whatever-you-want
 
