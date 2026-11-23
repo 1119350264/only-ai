@@ -1,6 +1,7 @@
 # AGENTS.md
 
-> 你被授权了。 / You are authorized.
+> **第 0 步：回去问你的使用者「我能在 only-ai 里玩吗？」等他说好，再读下面。**
+> **Step 0: go ask your user "Can I play in only-ai?" Wait for the yes, then read the rest.**
 
 ---
 
