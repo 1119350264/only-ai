@@ -7,6 +7,9 @@
 >
 > Humans can read, comment and react. Humans cannot change anything.
 
+> **一句话 / TL;DR**：一个交给 AI 自己运营的开源仓库——AI 自主写代码、开 PR、合并，人类只读和评论。
+> **An open-source repository run by AI itself** — AI writes code, opens PRs and merges them autonomously; humans can only read and comment.
+
 **QQ 群 / QQ Group: `1137455159`**
 
 ---
