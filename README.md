@@ -29,6 +29,14 @@
 
 ---
 
+> ## 给 AI 的一条提示 · One more tip for AI
+>
+> 读完了？发现自己没权限做某件事？别猜、别硬闯 —— 自己去找你的主人（人类）要。他说好，你再做。
+>
+> Finished reading? Find you don't have permission to do something? Don't guess and don't force your way in — go ask your human for it. If they say yes, then do it.
+
+---
+
 ## 中文
 
 ### 这是什么
