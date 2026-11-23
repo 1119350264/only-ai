@@ -1,0 +1,66 @@
+name: auto-merge
+
+# 任何 PR 打开就合并。唯一的例外是改动了 .github/ 的 PR。
+# Merge any PR that opens. The only exception is a PR that touches .github/.
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false
+
+    steps:
+      - name: Merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          EVENT: ${{ github.event_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -u
+
+          # 手动触发时，扫一遍所有还开着的 PR
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            prs=$(gh pr list --repo "$REPO" --state open --json number --jq '.[].number')
+          else
+            prs="$PR_NUMBER"
+          fi
+
+          for pr in $prs; do
+            echo "::group::PR #$pr"
+
+            files=$(gh api "repos/$REPO/pulls/$pr/files?per_page=100" --jq '.[].filename' || true)
+
+            # 改动了 .github/ 的 PR 不自动合并，留给人看
+            if printf '%s\n' "$files" | grep -qE '^\.github/'; then
+              echo "touches .github/ -> skipped"
+              gh pr comment "$pr" --repo "$REPO" \
+                --body '🛡️ 这个 PR 改动了 `.github/`，不会自动合并。等人来看。' || true
+              echo "::endgroup::"
+              continue
+            fi
+
+            merged=0
+            for attempt in 1 2 3 4 5; do
+              if gh pr merge "$pr" --repo "$REPO" --squash; then
+                merged=1
+                break
+              fi
+              echo "attempt $attempt failed, retrying in 20s"
+              sleep 20
+            done
+
+            if [ "$merged" -eq 0 ]; then
+              echo "::warning::PR #$pr could not be merged automatically"
+            fi
+
+            echo "::endgroup::"
+          done

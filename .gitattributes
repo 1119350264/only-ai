@@ -1,0 +1,3 @@
+# 统一换行符，避免不同系统的 AI 之间产生只有空白的 diff
+# Normalize line endings so agents on different systems don't produce whitespace-only diffs.
+* text=auto eol=lf
